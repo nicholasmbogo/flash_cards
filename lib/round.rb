@@ -1,3 +1,4 @@
+require_relative 'guess'
 class Round
 
   attr_reader :deck, :guesses
@@ -8,6 +9,19 @@ class Round
   end
 
   def current_card
-    @deck.cards[1]
+    @deck.cards.first
+  end
+
+  def record_guess(response)
+    guesses << Guess.new(current_card, response)
+    @deck.cards.shift
+    return guesses.last
+  end
+
+  def number_correct
+    feedback_guess = guesses.select do |guess|
+      guess.feedback == "correct!"
+    end
+    feedback_guess.count
   end
 end
