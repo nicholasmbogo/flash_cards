@@ -5,7 +5,6 @@ class Guess
   def initialize(card, response)
     @card = card
     @response = response
-    @feedback = feedback
   end
 
   def correct?
