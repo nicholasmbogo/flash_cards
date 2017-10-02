@@ -8,7 +8,7 @@ class CardGenerator
   end
 
   def cards
-    file =File.read(filename)
+    file = File.read(filename)
     lines = file.split("\n")
     lines.map do |line|
       split = line.split(",")
